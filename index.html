@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ground Up: Info Business Growth Partners</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --gray100: #1a1a1a;
+      --gray200: #242424;
+      --gray250: #2e2e2e;
+      --gray300: #3b3b3b;
+      --gray400: #4b4b4b;
+      --gray500: #606060;
+      --gray600: #888;
+      --gray900: #ffffff;
+      --accent: #a9ed42;
+      --accent-dark: #1e2e0e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--gray100);
+      color: var(--gray900);
+      font-size: 16px;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    /* ─── LAYOUT ───────────────────────────────────────────────── */
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ─── TYPOGRAPHY ────────────────────────────────────────────── */
+    .display-xl {
+      font-size: clamp(3rem, 7.5vw, 7rem);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 0.93;
+    }
+
+    .display-lg {
+      font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 0.96;
+    }
+
+    .display-md {
+      font-size: clamp(1.75rem, 2.8vw, 2.75rem);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+    }
+
+    .label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray500);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray500);
+      border: 1px solid var(--gray300);
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+    }
+
+    .tag-green {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ─── NAV ───────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(26, 26, 26, 0.88);
+      border-bottom: 1px solid var(--gray300);
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      font-size: 0.78rem;
+      color: var(--gray500);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: #fff; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--accent);
+      color: #1a1a1a;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      padding: 0.55rem 1.1rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      padding: 0.9rem 1.75rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-dark:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: transparent;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.9rem 1.75rem;
+      border-radius: 100px;
+      border: 1px solid var(--gray300);
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+    .btn-ghost:hover { border-color: var(--gray500); }
+
+    .btn-ghost-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      color: var(--gray600);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.55rem 1rem;
+      border-radius: 100px;
+      border: 1px solid var(--gray300);
+      text-decoration: none;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .btn-ghost-sm:hover { color: #fff; border-color: var(--gray500); }
+
+    /* ─── TICKER ────────────────────────────────────────────────── */
+    .ticker-outer {
+      overflow: hidden;
+      border-top: 1px solid var(--gray300);
+      border-bottom: 1px solid var(--gray300);
+      padding: 0.9rem 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      animation: scroll-ticker 32s linear infinite;
+      width: max-content;
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 2rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray500);
+      white-space: nowrap;
+    }
+
+    .ticker-dot { color: var(--accent); font-size: 0.45rem; }
+
+    @keyframes scroll-ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── STAT NUMBERS ──────────────────────────────────────────── */
+    .stat-num {
+      font-size: clamp(2.25rem, 3.5vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    /* ─── SERVICES ACCORDION ────────────────────────────────────── */
+    .svc-row {
+      border-top: 1px solid var(--gray300);
+      cursor: pointer;
+      user-select: none;
+    }
+    .svc-row:last-child { border-bottom: 1px solid var(--gray300); }
+
+    .svc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+    }
+
+    .svc-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      transition: color 0.15s;
+    }
+
+    .svc-header:hover .svc-title { color: var(--accent); }
+    .svc-row.open .svc-title { color: var(--accent); }
+
+    .svc-num {
+      font-size: 0.65rem;
+      color: var(--gray500);
+      margin-right: 1.5rem;
+      min-width: 1.5rem;
+    }
+
+    .svc-icon {
+      width: 20px; height: 20px;
+      color: var(--gray500);
+      transition: transform 0.2s, color 0.15s;
+      flex-shrink: 0;
+    }
+    .svc-row.open .svc-icon { transform: rotate(45deg); color: var(--accent); }
+
+    .svc-body {
+      display: none;
+      padding-bottom: 1.75rem;
+      padding-left: 3rem;
+    }
+    .svc-body.open { display: block; }
+
+    .svc-body p {
+      font-size: 0.85rem;
+      color: var(--gray600);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      max-width: 560px;
+    }
+
+    .svc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.4rem 2rem;
+    }
+
+    .svc-list li {
+      font-size: 0.8rem;
+      color: var(--gray500);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    .svc-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── CASE STUDY GRID ───────────────────────────────────────── */
+    .cs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--gray300);
+      border: 1px solid var(--gray300);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .cs-card {
+      background: var(--gray200);
+      padding: 2rem;
+      transition: background 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-card:hover { background: var(--gray250); }
+
+    .cs-result {
+      font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    /* ─── FEATURED CASE ─────────────────────────────────────────── */
+    .feat-card {
+      background: var(--gray200);
+      border-radius: 14px;
+      padding: 3rem;
+    }
+
+    .feat-card-green {
+      background: var(--accent-dark);
+      border: 1px solid rgba(169,237,66,0.25);
+    }
+
+    .feat-metric { border-top: 1px solid var(--gray300); padding-top: 1.25rem; }
+    .feat-metric-green { border-top-color: rgba(169,237,66,0.2); }
+
+    .feat-metric-num {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .feat-pill { background: var(--gray300); border-radius: 8px; padding: 1.25rem; }
+    .feat-pill-green { background: rgba(0,0,0,0.3); }
+
+    /* ─── COMPARE ───────────────────────────────────────────────── */
+    .compare-col {
+      background: var(--gray200);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .compare-item {
+      border-bottom: 1px solid var(--gray300);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+    .compare-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+    /* ─── TEAM ──────────────────────────────────────────────────── */
+    .team-photo {
+      background: var(--gray250);
+      border-radius: 10px;
+      aspect-ratio: 3/4;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links .nav-link { display: none; }
+      .hero-bottom { flex-direction: column !important; align-items: flex-start !important; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .intro-grid { grid-template-columns: 1fr !important; }
+      .cs-grid { grid-template-columns: repeat(2, 1fr); }
+      .svc-list { grid-template-columns: 1fr; }
+      .feat-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
+      .feat-pills-3 { grid-template-columns: repeat(2, 1fr) !important; }
+      .feat-pills-4 { grid-template-columns: repeat(2, 1fr) !important; }
+      .compare-grid { grid-template-columns: 1fr !important; }
+      .team-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .cta-inner { padding: 3rem 2rem !important; }
+    }
+
+    @media (max-width: 600px) {
+      .wrap { padding: 0 1.25rem; }
+      .cs-grid { grid-template-columns: 1fr; }
+      .feat-pills-3, .feat-pills-4 { grid-template-columns: 1fr !important; }
+      .team-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="https://calendly.com/ground_up_consulting/discovery_call" class="nav-logo">Ground Up</a>
+      <div class="nav-links">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#case-studies" class="nav-link">Work</a>
+        <a href="#team" class="nav-link">Team</a>
+        <a href="#book-call" class="btn-primary">
+          Book a Call
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ HERO -->
+  <div style="padding-top: 56px;">
+    <div class="wrap">
+      <div style="padding-top: 4.5rem; padding-bottom: 4rem; border-bottom: 1px solid var(--gray300);">
+
+        <div style="margin-bottom: 2.75rem;">
+          <span class="tag" style="margin-bottom: 1.5rem; display: inline-flex;">Info &amp; Coaching</span>
+          <h1 class="display-xl" style="max-width: 1050px; margin-top: 1.25rem;">
+            We build the systems<br>that scale info businesses.
+          </h1>
+        </div>
+
+        <div class="hero-bottom" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+          <p style="font-size: 1rem; color: var(--gray600); max-width: 460px; line-height: 1.65; letter-spacing: -0.015em;">
+            Funnels. Sales teams. Content. Operations. We run the back-end of your info business on a performance basis, so you can focus on showing up.
+          </p>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; flex-shrink: 0;">
+            <a href="#book-call" class="btn-primary" style="font-size: 0.875rem; padding: 0.85rem 1.5rem;">
+              Schedule a Diagnostics Call
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#case-studies" class="btn-ghost" style="font-size: 0.875rem; padding: 0.85rem 1.5rem;">See Our Work</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ TICKER -->
+  <div class="ticker-outer">
+    <div class="ticker-track">
+      <div class="ticker-item"><span class="ticker-dot">◆</span> $5M+ Revenue Generated</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> 15+ Funnels Built</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> $40k Cash Collected in 72 Hours</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> $60k Webinar Revenue</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> 70% Webinar Show Rate</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> 40%+ Close Rates</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> 45% Revenue Increase in 30 Days</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> 8+ Partnerships Serviced</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> $150k Opportunity Booked in 2 Days</div>
+      <!-- duplicate for seamless loop -->
+      <div class="ticker-item"><span class="ticker-dot">◆</span> $5M+ Revenue Generated</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> 15+ Funnels Built</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> $40k Cash Collected in 72 Hours</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> $60k Webinar Revenue</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> 70% Webinar Show Rate</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> 40%+ Close Rates</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> 45% Revenue Increase in 30 Days</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> 8+ Partnerships Serviced</div>
+      <div class="ticker-item"><span class="ticker-dot">◆</span> $150k Opportunity Booked in 2 Days</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ STATS + INTRO -->
+  <div style="border-top: 1px solid var(--gray300); padding: 5rem 0;">
+    <div class="wrap">
+
+      <div class="stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding-bottom: 5rem; border-bottom: 1px solid var(--gray300);">
+        <div>
+          <div class="stat-num">$5M+</div>
+          <p style="margin-top: 0.6rem; font-size: 0.82rem; color: var(--gray500); line-height: 1.55;">Revenue generated for info &amp; coaching businesses</p>
+        </div>
+        <div>
+          <div class="stat-num">15+</div>
+          <p style="margin-top: 0.6rem; font-size: 0.82rem; color: var(--gray500); line-height: 1.55;">High-ticket &amp; low-ticket funnels built and optimized</p>
+        </div>
+        <div>
+          <div class="stat-num">8+</div>
+          <p style="margin-top: 0.6rem; font-size: 0.82rem; color: var(--gray500); line-height: 1.55;">Partnerships serviced across creators &amp; businesses</p>
+        </div>
+        <div>
+          <div class="stat-num">1000s</div>
+          <p style="margin-top: 0.6rem; font-size: 0.82rem; color: var(--gray500); line-height: 1.55;">Emails, landing pages, scripts, and assets produced</p>
+        </div>
+      </div>
+
+      <div class="intro-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; padding-top: 5rem;">
+        <div>
+          <span class="label" style="display: block; margin-bottom: 1.25rem;">What We Do</span>
+          <h2 class="display-md">Your full back-end, installed and running.</h2>
+        </div>
+        <div style="padding-top: 0.5rem;">
+          <p style="font-size: 0.95rem; color: var(--gray600); line-height: 1.8; margin-bottom: 1.25rem; letter-spacing: -0.01em;">
+            Most creators have the audience. What they're missing is the system that turns that attention into consistent, predictable revenue.
+          </p>
+          <p style="font-size: 0.95rem; color: var(--gray600); line-height: 1.8; letter-spacing: -0.01em;">
+            We embed into your business as operators, building funnels, hiring and managing sales teams, running launches, and handling the back-end so you never have to figure it out alone.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SERVICES -->
+  <div style="border-top: 1px solid var(--gray300); padding: 1rem 0 5rem;" id="services">
+    <div class="wrap">
+
+      <div style="padding-top: 3rem; padding-bottom: 2.5rem; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+        <h2 class="display-md">Services &amp; Solutions</h2>
+        <span class="label">What we handle</span>
+      </div>
+
+      <div id="svc-accordion">
+
+        <div class="svc-row" onclick="toggleSvc(this)">
+          <div class="svc-header">
+            <div style="display:flex;align-items:center;">
+              <span class="svc-num">01</span>
+              <span class="svc-title">Funnel Build &amp; Optimization</span>
+            </div>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="svc-body">
+            <p>Done-for-you funnel builds that convert, from cold traffic to closed deal. Every page, every sequence, every detail handled. We've built 15+ funnels across webinar, high-ticket, and low-ticket models.</p>
+            <ul class="svc-list">
+              <li>Registration &amp; thank you pages</li>
+              <li>VSL page design &amp; copy</li>
+              <li>Webinar replay funnel</li>
+              <li>Lead magnet builds</li>
+              <li>Post-booking sequences</li>
+              <li>No-show email capture</li>
+              <li>Application funnel setup</li>
+              <li>Sales page development</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="svc-row" onclick="toggleSvc(this)">
+          <div class="svc-header">
+            <div style="display:flex;align-items:center;">
+              <span class="svc-num">02</span>
+              <span class="svc-title">Traffic &amp; Lead Generation</span>
+            </div>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="svc-body">
+            <p>Paid and organic working together. We set up your ads, write the copy, build the creatives, and install retargeting, while your organic content engine runs alongside it.</p>
+            <ul class="svc-list">
+              <li>Meta campaign setup &amp; management</li>
+              <li>Ad creative design (5+ variations)</li>
+              <li>Audience research &amp; targeting</li>
+              <li>Pixel installation &amp; retargeting</li>
+              <li>IG story sequences (14-day+)</li>
+              <li>Organic launch campaigns</li>
+              <li>Email automation (7-part sequences)</li>
+              <li>SMS &amp; community blasts</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="svc-row" onclick="toggleSvc(this)">
+          <div class="svc-header">
+            <div style="display:flex;align-items:center;">
+              <span class="svc-num">03</span>
+              <span class="svc-title">Sales Team Infrastructure</span>
+            </div>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="svc-body">
+            <p>We hire, train, and manage your entire sales team. Closers, setters, and managers with proven track records in your niche, running at 40%+ close rates. You focus on showing up. We handle everything else.</p>
+            <ul class="svc-list">
+              <li>Closer &amp; setter hiring</li>
+              <li>Niche-specific script creation</li>
+              <li>CRM integration &amp; lead tagging</li>
+              <li>Dialling &amp; follow-up systems</li>
+              <li>KPI tracking &amp; team management</li>
+              <li>Weekly performance reporting</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="svc-row" onclick="toggleSvc(this)">
+          <div class="svc-header">
+            <div style="display:flex;align-items:center;">
+              <span class="svc-num">04</span>
+              <span class="svc-title">Content &amp; Copy</span>
+            </div>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="svc-body">
+            <p>Content built around a specific ICP to drive high-ticket sales, not just views. We script, structure, and distribute across your platforms. Thousands of assets produced across our client base.</p>
+            <ul class="svc-list">
+              <li>Video scripts &amp; production briefs</li>
+              <li>VSL scripting</li>
+              <li>Email copywriting</li>
+              <li>Ad copy (10+ headline variations)</li>
+              <li>Landing page copy</li>
+              <li>Short-form content strategy</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="svc-row" onclick="toggleSvc(this)">
+          <div class="svc-header">
+            <div style="display:flex;align-items:center;">
+              <span class="svc-num">05</span>
+              <span class="svc-title">Done-For-You Operations</span>
+            </div>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="svc-body">
+            <p>Full back-end management. We handle everything from onboarding to fulfillment. Lead scoring, automations, CRM... nothing falls through the cracks and every dollar is tracked.</p>
+            <ul class="svc-list">
+              <li>Backend CRM &amp; automations</li>
+              <li>Lead scoring &amp; prioritization</li>
+              <li>Onboarding process buildout</li>
+              <li>Fulfillment delivery systems</li>
+              <li>Weekly KPI dashboards</li>
+              <li>Analytics &amp; conversion tracking</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ CASE STUDIES GRID -->
+  <div style="border-top: 1px solid var(--gray300); padding: 5rem 0;" id="case-studies">
+    <div class="wrap">
+
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:3rem;">
+        <div>
+          <span class="label" style="display:block;margin-bottom:1rem;">Cases &amp; Results</span>
+          <h2 class="display-md">What we've built.</h2>
+        </div>
+        <p style="font-size:0.82rem;color:var(--gray500);max-width:320px;line-height:1.6;">
+          A selection of work across creators, coaches, and businesses. Numbers are real. We don't make them up.
+        </p>
+      </div>
+
+      <div class="cs-grid">
+
+        <div class="cs-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;">
+            <span class="tag">Creator</span>
+            <span style="font-size:0.65rem;color:var(--gray500);letter-spacing:0.05em;text-transform:uppercase;">Dating</span>
+          </div>
+          <div style="flex:1;">
+            <h3 style="font-size:1rem;font-weight:600;letter-spacing:-0.025em;margin-bottom:0.25rem;">Benjamin Seda</h3>
+            <p style="font-size:0.75rem;color:var(--gray500);margin-bottom:1.5rem;">1.5M YouTube &nbsp;·&nbsp; 400k Instagram</p>
+            <div class="cs-result">~$100k</div>
+            <p style="font-size:0.72rem;color:var(--gray500);margin-bottom:1.25rem;margin-top:0.2rem;">Attributed Revenue Generated</p>
+            <p style="font-size:0.8rem;color:var(--gray600);line-height:1.65;">Full funnel revamp: lead magnets, email campaigns, VSL page, application flow, post-sales journey, and content production for his 30-man series initiative.</p>
+          </div>
+        </div>
+
+        <div class="cs-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;">
+            <span class="tag">Creator</span>
+            <span style="font-size:0.65rem;color:var(--gray500);letter-spacing:0.05em;text-transform:uppercase;">Fitness</span>
+          </div>
+          <div style="flex:1;">
+            <h3 style="font-size:1rem;font-weight:600;letter-spacing:-0.025em;margin-bottom:0.25rem;">Darius Pitu</h3>
+            <p style="font-size:0.75rem;color:var(--gray500);margin-bottom:1.5rem;">380k+ Instagram</p>
+            <div class="cs-result">0 → $10k/mo</div>
+            <p style="font-size:0.72rem;color:var(--gray500);margin-bottom:1.25rem;margin-top:0.2rem;">First High-Ticket Launch</p>
+            <p style="font-size:0.8rem;color:var(--gray600);line-height:1.65;">Built his entire coaching business from scratch: organic content strategy, full sales team (setters + closers), front and backend marketing funnels.</p>
+          </div>
+        </div>
+
+        <div class="cs-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;">
+            <span class="tag">Creator</span>
+            <span style="font-size:0.65rem;color:var(--gray500);letter-spacing:0.05em;text-transform:uppercase;">Fitness</span>
+          </div>
+          <div style="flex:1;">
+            <h3 style="font-size:1rem;font-weight:600;letter-spacing:-0.025em;margin-bottom:0.25rem;">Valentina Lequeuex</h3>
+            <p style="font-size:0.75rem;color:var(--gray500);margin-bottom:1.5rem;">1.5M Instagram</p>
+            <div class="cs-result">+40%</div>
+            <p style="font-size:0.72rem;color:var(--gray500);margin-bottom:1.25rem;margin-top:0.2rem;">Sales Increase &nbsp;·&nbsp; Multi Six Figures/mo</p>
+            <p style="font-size:0.8rem;color:var(--gray600);line-height:1.65;">Created a 1:1 high-ticket coaching funnel, built fully custom CRM with automations for lead scoring, prioritization, and fulfillment delivery.</p>
+          </div>
+        </div>
+
+        <div class="cs-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;">
+            <span class="tag">Creator</span>
+            <span style="font-size:0.65rem;color:var(--gray500);letter-spacing:0.05em;text-transform:uppercase;">Sales Coaching</span>
+          </div>
+          <div style="flex:1;">
+            <h3 style="font-size:1rem;font-weight:600;letter-spacing:-0.025em;margin-bottom:0.25rem;">Jack Ormonroyd</h3>
+            <p style="font-size:0.75rem;color:var(--gray500);margin-bottom:1.5rem;">High-Ticket Sales Coach</p>
+            <div class="cs-result">$40k+</div>
+            <p style="font-size:0.72rem;color:var(--gray500);margin-bottom:1.25rem;margin-top:0.2rem;">Cash Collected in 72 Hours</p>
+            <p style="font-size:0.8rem;color:var(--gray600);line-height:1.65;">Launched a webinar with 30+ booked calls and 42% show rate. Full funnel, hired closers, 14-day story sequence, replay funnel, post-webinar email sequences.</p>
+          </div>
+        </div>
+
+        <div class="cs-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;">
+            <span class="tag">Business</span>
+            <span style="font-size:0.65rem;color:var(--gray500);letter-spacing:0.05em;text-transform:uppercase;">Education</span>
+          </div>
+          <div style="flex:1;">
+            <h3 style="font-size:1rem;font-weight:600;letter-spacing:-0.025em;margin-bottom:0.25rem;">Ivy Brothers</h3>
+            <p style="font-size:0.75rem;color:var(--gray500);margin-bottom:1.5rem;">Ivy League Prep Program</p>
+            <div class="cs-result">$40k+</div>
+            <p style="font-size:0.72rem;color:var(--gray500);margin-bottom:1.25rem;margin-top:0.2rem;">Additional Revenue, First Month</p>
+            <p style="font-size:0.8rem;color:var(--gray600);line-height:1.65;">Email list launch, backend lead scoring and automations, trained setter + closer, increasing show up and close rate by 35%+.</p>
+          </div>
+        </div>
+
+        <div class="cs-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;">
+            <span class="tag">Business</span>
+            <span style="font-size:0.65rem;color:var(--gray500);letter-spacing:0.05em;text-transform:uppercase;">Health</span>
+          </div>
+          <div style="flex:1;">
+            <h3 style="font-size:1rem;font-weight:600;letter-spacing:-0.025em;margin-bottom:0.25rem;">Kalos Health</h3>
+            <p style="font-size:0.75rem;color:var(--gray500);margin-bottom:1.5rem;">DEXA Clinic &nbsp;·&nbsp; San Francisco</p>
+            <div class="cs-result">+45%</div>
+            <p style="font-size:0.72rem;color:var(--gray500);margin-bottom:1.25rem;margin-top:0.2rem;">Revenue Increase in ~30 Days</p>
+            <p style="font-size:0.8rem;color:var(--gray600);line-height:1.65;">Implemented CRM, marketing automations, launched paid ads, and generated a new pipeline from scratch.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ FEATURED: JACK -->
+  <div style="padding: 0 0 3rem;">
+    <div class="wrap">
+      <div class="feat-card">
+        <div class="feat-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+          <div>
+            <span class="label" style="display:block;margin-bottom:1.5rem;">Case Study: Deep Dive</span>
+            <h2 class="display-md" style="margin-bottom:1.5rem;">$40k+ collected in 72 hours for Jack.</h2>
+            <p style="font-size:0.875rem;color:var(--gray600);line-height:1.75;margin-bottom:2rem;letter-spacing:-0.01em;">
+              Jack Ormonroyd is a high-ticket sales coach with an engaged organic audience. The goal: launch a webinar that converted cold and warm leads into paying clients, fast. We built the entire system.
+            </p>
+            <a href="https://www.instagram.com/jackormonroyd" target="_blank" class="btn-ghost-sm">
+              View Jack's Profile
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <div class="feat-metric">
+              <div class="feat-metric-num">30+</div>
+              <p style="font-size:0.78rem;color:var(--gray500);margin-top:0.3rem;">Booked calls in a 72-hour window</p>
+            </div>
+            <div class="feat-metric">
+              <div class="feat-metric-num">$40k+</div>
+              <p style="font-size:0.78rem;color:var(--gray500);margin-top:0.3rem;">Cash collected (+ payment plans outstanding)</p>
+            </div>
+            <div class="feat-metric">
+              <div class="feat-metric-num">42%</div>
+              <p style="font-size:0.78rem;color:var(--gray500);margin-top:0.3rem;">Webinar show rate</p>
+            </div>
+            <div class="feat-metric">
+              <div class="feat-metric-num">55%</div>
+              <p style="font-size:0.78rem;color:var(--gray500);margin-top:0.3rem;">Email open rate on launch sequence</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:2.5rem;border-top:1px solid var(--gray300);padding-top:2rem;">
+          <p class="label" style="margin-bottom:1.25rem;">What We Built</p>
+          <div class="feat-pills-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+            <div class="feat-pill">
+              <p style="font-size:0.8rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.4rem;">01: Organic Launch</p>
+              <p style="font-size:0.75rem;color:var(--gray500);line-height:1.6;">14-day IG story sequence, waitlist WA group, email list buildout, mini VSLs, 12-day email nurture</p>
+            </div>
+            <div class="feat-pill">
+              <p style="font-size:0.8rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.4rem;">02: Sales Team</p>
+              <p style="font-size:0.75rem;color:var(--gray500);line-height:1.6;">Hired 2 extra closers for post-webinar volume. Setters dialling pre-webinar to get nurture + upfront deposits</p>
+            </div>
+            <div class="feat-pill">
+              <p style="font-size:0.8rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.4rem;">03: Post-Webinar</p>
+              <p style="font-size:0.75rem;color:var(--gray500);line-height:1.6;">Replay funnel buildout, urgency email sequence with special offer, dialling every unconverted lead</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ WHAT WE DO VS YOU DO -->
+  <div style="border-top:1px solid var(--gray300);padding:5rem 0;">
+    <div class="wrap">
+      <div style="margin-bottom:3rem;">
+        <span class="label" style="display:block;margin-bottom:1rem;">The Split</span>
+        <h2 class="display-md">What we do vs. what you do.</h2>
+      </div>
+      <div class="compare-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+        <div class="compare-col">
+          <p style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.75rem;">Our Team Handles</p>
+          <div class="compare-item">
+            <p style="font-size:0.85rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.4rem;">Funnel Build &amp; Optimization</p>
+            <p style="font-size:0.78rem;color:var(--gray500);line-height:1.6;">Registration page, thank you page, webinar replay, attendance page, sales page, AI-optimized webinar script, presentation slides &amp; speaker notes</p>
+          </div>
+          <div class="compare-item">
+            <p style="font-size:0.85rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.4rem;">Traffic &amp; Lead Generation</p>
+            <p style="font-size:0.78rem;color:var(--gray500);line-height:1.6;">Email sequences, social media templates, Meta campaign setup, ad creative design, audience research, retargeting, pixel installation, 10+ ad copy variations</p>
+          </div>
+          <div class="compare-item">
+            <p style="font-size:0.85rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.4rem;">Email Infrastructure</p>
+            <p style="font-size:0.78rem;color:var(--gray500);line-height:1.6;">7-part automated sequences, 3-part reminder series, post-webinar nurture, no-show follow-up, replay access automation, registration confirmation</p>
+          </div>
+          <div>
+            <p style="font-size:0.85rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.4rem;">Sales &amp; Reporting</p>
+            <p style="font-size:0.78rem;color:var(--gray500);line-height:1.6;">Full sales team (closers, setters, managers), CRM integration, lead tagging, dialling, analytics &amp; conversion tracking, weekly KPI dashboards</p>
+          </div>
+        </div>
+        <div class="compare-col" style="background:var(--gray100);border:1px solid var(--gray300);">
+          <p style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray500);margin-bottom:1.75rem;">You Handle</p>
+          <div style="display:flex;flex-direction:column;gap:1.75rem;">
+            <div style="display:flex;gap:1.25rem;align-items:flex-start;">
+              <div style="width:5px;height:5px;background:var(--accent);border-radius:50%;margin-top:0.45rem;flex-shrink:0;"></div>
+              <div>
+                <p style="font-size:0.9rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.35rem;">Present the Webinar</p>
+                <p style="font-size:0.82rem;color:var(--gray500);line-height:1.6;">The slides are premade. You just show up, deliver, and let the system do the rest.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:1.25rem;align-items:flex-start;">
+              <div style="width:5px;height:5px;background:var(--accent);border-radius:50%;margin-top:0.45rem;flex-shrink:0;"></div>
+              <div>
+                <p style="font-size:0.9rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.35rem;">Promote Organically</p>
+                <p style="font-size:0.82rem;color:var(--gray500);line-height:1.6;">Using our ready-made promotion templates. We tell you what to post, when to post it, and what to say.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:1.25rem;align-items:flex-start;">
+              <div style="width:5px;height:5px;background:var(--accent);border-radius:50%;margin-top:0.45rem;flex-shrink:0;"></div>
+              <div>
+                <p style="font-size:0.9rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.35rem;">Film Ads</p>
+                <p style="font-size:0.82rem;color:var(--gray500);line-height:1.6;">We write the scripts, handle creative direction, and manage everything after. You just hit record.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ TEAM -->
+  <div style="border-top:1px solid var(--gray300);padding:5rem 0;" id="team">
+    <div class="wrap">
+      <div style="margin-bottom:3.5rem;">
+        <span class="label" style="display:block;margin-bottom:1rem;">The People</span>
+        <h2 class="display-md">Who you're working with.</h2>
+      </div>
+      <div class="team-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;">
+
+        <div>
+          <div class="team-photo">
+            <img src="marco_pic.jpeg" alt="Marco Garcia" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+          </div>
+          <h3 style="font-size:1rem;font-weight:600;letter-spacing:-0.025em;">Marco Garcia</h3>
+          <p style="font-size:0.78rem;color:var(--accent);margin:0.25rem 0 0.9rem;">Marketer &amp; Operator</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.45rem;">
+            <li style="font-size:0.78rem;color:var(--gray500);display:flex;gap:0.5rem;align-items:baseline;"><span style="color:var(--accent);font-size:0.65rem;flex-shrink:0;">→</span>Ex-Meta (FB/IG) Operations Manager</li>
+            <li style="font-size:0.78rem;color:var(--gray500);display:flex;gap:0.5rem;align-items:baseline;"><span style="color:var(--accent);font-size:0.65rem;flex-shrink:0;">→</span>Scaled ML program to $10M/year, overseeing 700+ contractors globally</li>
+            <li style="font-size:0.78rem;color:var(--gray500);display:flex;gap:0.5rem;align-items:baseline;"><span style="color:var(--accent);font-size:0.65rem;flex-shrink:0;">→</span>Consulted creators with multiple 7-figure businesses</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="team-photo">
+            <img src="morgan_pic.jpeg" alt="Morgan Nitzan" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+          </div>
+          <h3 style="font-size:1rem;font-weight:600;letter-spacing:-0.025em;">Morgan Nitzan</h3>
+          <p style="font-size:0.78rem;color:var(--accent);margin:0.25rem 0 0.9rem;">Marketer &amp; Operator</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.45rem;">
+            <li style="font-size:0.78rem;color:var(--gray500);display:flex;gap:0.5rem;align-items:baseline;"><span style="color:var(--accent);font-size:0.65rem;flex-shrink:0;">→</span>2.5+ years scaling high-ticket info businesses</li>
+            <li style="font-size:0.78rem;color:var(--gray500);display:flex;gap:0.5rem;align-items:baseline;"><span style="color:var(--accent);font-size:0.65rem;flex-shrink:0;">→</span>6-figures in monthly ad spend managed</li>
+            <li style="font-size:0.78rem;color:var(--gray500);display:flex;gap:0.5rem;align-items:baseline;"><span style="color:var(--accent);font-size:0.65rem;flex-shrink:0;">→</span>Installed systems that scaled $10k → $200k/month</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="team-photo">
+            <img src="frankie_img.jpeg" alt="Frankie Isaac" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+          </div>
+          <h3 style="font-size:1rem;font-weight:600;letter-spacing:-0.025em;">Frankie Isaac</h3>
+          <p style="font-size:0.78rem;color:var(--accent);margin:0.25rem 0 0.9rem;">Sales Manager &amp; Operator</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.45rem;">
+            <li style="font-size:0.78rem;color:var(--gray500);display:flex;gap:0.5rem;align-items:baseline;"><span style="color:var(--accent);font-size:0.65rem;flex-shrink:0;">→</span>$5M+ in info/coaching sales in under 2 years</li>
+            <li style="font-size:0.78rem;color:var(--gray500);display:flex;gap:0.5rem;align-items:baseline;"><span style="color:var(--accent);font-size:0.65rem;flex-shrink:0;">→</span>Scaling 7-figure sales teams, expert in hiring &amp; training reps</li>
+            <li style="font-size:0.78rem;color:var(--gray500);display:flex;gap:0.5rem;align-items:baseline;"><span style="color:var(--accent);font-size:0.65rem;flex-shrink:0;">→</span>Closed for multiple 8-figure AI info businesses</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ CTA -->
+  <div style="border-top:1px solid var(--gray300);padding:5rem 0 7rem;" id="book-call">
+    <div class="wrap">
+      <div class="cta-inner" style="background:var(--accent);border-radius:16px;padding:5rem 4.5rem;text-align:center;">
+        <span style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(26,26,26,0.45);display:block;margin-bottom:1.5rem;">Ready to scale</span>
+        <h2 class="display-lg" style="color:#1a1a1a;max-width:680px;margin:0 auto 1.5rem;">
+          Schedule a diagnostics call. We'll show up knowing your funnel already.
+        </h2>
+        <p style="font-size:0.9rem;color:rgba(26,26,26,0.55);max-width:500px;margin:0 auto 2.75rem;line-height:1.7;letter-spacing:-0.01em;">
+          Before the call, our team does a full funnel teardown: your content, CTAs, DM flow, booking flow, sales process, and fulfillment signals. We show up already knowing where revenue is being left on the table.
+        </p>
+        <!-- TODO: replace with your Calendly link -->
+        <a href="https://calendly.com/ground_up_consulting/discovery_call" class="btn-dark">
+          Book Your Diagnostics Call
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ FOOTER -->
+  <footer style="border-top:1px solid var(--gray300);">
+    <div class="wrap" style="padding-top:2rem;padding-bottom:2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <span style="font-size:0.9rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;">Ground Up</span>
+      <p style="font-size:0.72rem;color:var(--gray500);">© 2025 Ground Up Agency. All rights reserved.</p>
+      <a href="#book-call" style="font-size:0.75rem;color:var(--accent);text-decoration:none;">Book a Call →</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSvc(row) {
+      const body = row.querySelector('.svc-body');
+      const isOpen = row.classList.contains('open');
+      document.querySelectorAll('.svc-row').forEach(r => {
+        r.classList.remove('open');
+        r.querySelector('.svc-body').classList.remove('open');
+      });
+      if (!isOpen) {
+        row.classList.add('open');
+        body.classList.add('open');
+      }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          window.scrollTo({ top: el.offsetTop - 72, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
